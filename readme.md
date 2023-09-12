@@ -30,7 +30,7 @@
 
 **docker pull mongo**
 
-**docker volume create <Volume_name>**
+`docker volume create <Volume_name>`
 
 **docker run --name <Container_Name> -d -p 27017:27017 -v <Volume_name>:/data/db mongo**
 
