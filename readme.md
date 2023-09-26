@@ -58,3 +58,30 @@
 **users> `show collections`**  //Returns the collections
 
 **users> `db.collectionname.find()`** // Returns all the documetns in the collections
+
+# MongoDB Sharding
+
+## Config servers
+
+`mongod --configsvr --replSet confrs --port 27017 --dbpath /data/db` 
+
+## Shard server
+
+`mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db`
+
+## Mongos Router
+
+` mongos --configdb confrs/<host>:<port> --bind_ip 0.0.0.0 --port 27017`
+
+## Sharding commands
+
+ `sh.enableSharding('dbname')`
+ `sh.shardCollection('db.collname',{'sharding_key':'type'})`
+
+## Mongo Document import command 
+`mongoimport --host <host string>:<port> --db test --collection gpsdata --file <path to json file> --jsonArray`
+
+
+
+
+
