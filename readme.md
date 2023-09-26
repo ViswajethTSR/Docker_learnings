@@ -76,9 +76,11 @@
 ## Sharding commands
 
  `sh.enableSharding('dbname')`
+ 
  `sh.shardCollection('db.collname',{'sharding_key':'type'})`
 
 ## Mongo Document import command 
+
 `mongoimport --host <host string>:<port> --db test --collection gpsdata --file <path to json file> --jsonArray`
 
 
