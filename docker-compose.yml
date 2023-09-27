@@ -37,7 +37,7 @@ services:
     restart: always
     command: mongod --shardsvr --replSet shard2rs --port 27017 --dbpath /data/db
     ports:
-      - 30001:27017
+      - 50001:27017
     volumes:
       - /home/fleettrack/sharding/shard2svr/data/db:/data/db    
 
