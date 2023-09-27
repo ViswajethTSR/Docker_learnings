@@ -38,7 +38,13 @@
 
 ` mongos --configdb confrs/<host>:<port> --bind_ip 0.0.0.0 --port 27017`
 
-## Sharding commands
+## In mongos router 
+
+   **Create db= use demo**
+
+   **Create collection= db.createCollection('collectionName')**
+
+### Sharding commands
  
  `sh.addShard()`
 
@@ -54,11 +60,5 @@
 
 `mongoimport --host <host string>:<port> --db test --collection gpsdata --file <path to json file> --jsonArray`
 
-## In mongos router 
 
-   **Create db= use demo**
-
-   **Create collection= db.createCollection('collectionName')**
-
-   
    
