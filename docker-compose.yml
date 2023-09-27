@@ -1,0 +1,47 @@
+#Shard cluster configuration with 2 shards
+version: '3' 
+
+services:
+
+  cfgsvr1:
+    container_name: cfgsvr1
+    image: mongo
+    command: mongod --configsvr --replSet confrs --port 27017 --dbpath /data/db
+    restart: always
+    ports:
+      - 40001:27017
+    volumes:
+      - /home/fleettrack/sharding/configsvr/data/db:/data/db:/data/db
+
+  mongos:
+    container_name: mongos
+    restart: always
+    image: mongo
+    command: mongos --configdb confrs/139.59.31.201:40001 --bind_ip 0.0.0.0 --port 27017
+    ports:
+      - 60000:27017
+
+  shard1svr1:
+    container_name: shard1svr1
+    image: mongo
+    restart: always
+    command: mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db
+    ports:
+      - 30001:27017
+    volumes:
+      - /home/fleettrack/sharding/shards1vr/data/db:/data/db
+  
+  shard2svr1:
+    container_name: shard2svr1
+    image: mongo
+    restart: always
+    command: mongod --shardsvr --replSet shard2rs --port 27017 --dbpath /data/db
+    ports:
+      - 30001:27017
+    volumes:
+      - /home/fleettrack/sharding/shard2svr/data/db:/data/db    
+
+volumes:
+  cfgsvr1: {}
+  shard1svr1: {}
+  shard2svr1: {}
