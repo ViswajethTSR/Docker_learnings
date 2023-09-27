@@ -53,3 +53,12 @@
 ## Mongo Document import command 
 
 `mongoimport --host <host string>:<port> --db test --collection gpsdata --file <path to json file> --jsonArray`
+
+## In mongos router 
+
+   **Create db= use demo**
+
+   **Create collection= db.createCollection('collectionName')**
+
+   
+   
