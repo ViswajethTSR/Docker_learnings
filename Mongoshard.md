@@ -14,6 +14,8 @@
         { _id : 0, host : "<host>:<port>" },
         ]
     })
+     
+    rs.status() 
 
 ## Shard server
 
@@ -30,15 +32,23 @@
         ]
       }
     )
+
+    rs.status()
 ## Mongos Router
 
 ` mongos --configdb confrs/<host>:<port> --bind_ip 0.0.0.0 --port 27017`
 
 ## Sharding commands
+ 
+ `sh.addShard()`
 
  `sh.enableSharding('dbname')`
  
  `sh.shardCollection('db.collname',{'sharding_key':'type'})`
+ 
+  `sh.status()`
+  
+  `db.gpsdata.getCollectionDistribution()`
 
 ## Mongo Document import command 
 
