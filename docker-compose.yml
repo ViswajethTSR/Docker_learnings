@@ -17,9 +17,21 @@ services:
     container_name: mongos
     restart: always
     image: mongo
-    command: mongos --configdb confrs/139.59.31.201:40001 --bind_ip 0.0.0.0 --port 27017
+    command: mongos --configdb confrs/<host_string>:40001 --bind_ip 0.0.0.0 --port 27017
     ports:
       - 60000:27017
+    environment:
+      - MONGO_INITDB_DATABASE=datadb
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "6"
+        max-size: "50m"
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - /mnt/dbvol1/db:/data/db      
 
   shard1svr1:
     container_name: shard1svr1
@@ -31,7 +43,7 @@ services:
     volumes:
       - /home/fleettrack/sharding/shards1vr/data/db:/data/db
   
-  shard2svr1:
+  shard2svr1: 
     container_name: shard2svr1
     image: mongo
     restart: always
