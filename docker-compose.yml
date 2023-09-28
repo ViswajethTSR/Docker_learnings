@@ -11,7 +11,7 @@ services:
     ports:
       - 40001:27017
     volumes:
-      - /home/fleettrack/sharding/configsvr/data/db:/data/db:/data/db
+      - /mnt/configsvr/data/db:/data/db:/data/db
 
   mongos:
     container_name: mongos
@@ -41,7 +41,7 @@ services:
     ports:
       - 30001:27017
     volumes:
-      - /home/fleettrack/sharding/shards1vr/data/db:/data/db
+      - /mnt/shards1vr/data/db:/data/db
   
   shard2svr1: 
     container_name: shard2svr1
@@ -51,7 +51,7 @@ services:
     ports:
       - 50001:27017
     volumes:
-      - /home/fleettrack/sharding/shard2svr/data/db:/data/db    
+      - /mnt/shard2svr/data/db:/data/db    
 
 volumes:
   cfgsvr1: {}
